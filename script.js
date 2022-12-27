@@ -21,12 +21,12 @@ var alphaU = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890";
 var specialCharacters = " !#$%&'()*+,-./:;<=>?@^_`{|}~[]";
 var everyOption = alphaL+ alphaU +numbers+specialCharacters.toString('');
-console.log(everyOption[27])
+// console.log(everyOption[27])
 
 // FUNCTION START 
 function generatePassword() {
 
-  //// finding wether true or false - If True, add the corresponding array to selectionsResults - if False, add empty string. (maybe find more research to add nothing.)
+  //// finding whether true or false - If True, add the corresponding string to selectionsResults - if False, add empty string. (maybe find more research to add nothing.)
   var Upper = confirm('Would you like Uppercased Letters in your PASSWORD?');
   if (Upper === true) {
     Upper = alphaU;
@@ -61,49 +61,44 @@ if(eSpecial === true) {
   eSpecial = '';
 }
 console.log(eSpecial);
-
+///////////////////////////////////////////////////
 
 //////
 //////// parseInt to change prompt property from string to number.
 var lengthPassword = parseInt(prompt('How many character would you like in your PASSWORD? (Please use any NUMBER between 8 - 128)'));
 
-/// edge cases for: not using a number and setting a number between 8 and 128
+/// edge cases: not using a number and setting a number between 8 and 128
 if (isNaN(lengthPassword) ) {
   alert('Please enter a Number')
 } else if (lengthPassword < 8 || lengthPassword > 128) {
   alert('Please pick a number between 8 and 128')
 }
 
+console.log("The length of the password: " + lengthPassword);
+
+/// Updating the user with their choices
+//////////
+// var finalCheck = prompt('')
+// if(selectionsResults = Upper === true && Lower === true && NumBers === true && eSpecial === true) {
+//   alert('Uppercased Letters \n Lowercased Letters \n Numbers \n Special Characters?')
+// } else if (Upper === true && Lower === true && NumBers === true && eSpecial !== true) {
+//   alert('////// placeholder')
+// }
 
 
-console.log(lengthPassword);
 
 
 ////variable of all the true statements, all in string form
 // var uniquePassword= '';
 var selectionsResults = Upper + Lower +NumBers + eSpecial.toString();
-console.log(selectionsResults);
 
+var randomSelectionResults = selectionsResults[Math.floor(Math.random() * selectionsResults.length)]; 
 
-// for (var i = 0; i < selectionsResults.length; i++) {
+for (var i = 0; i < lengthPassword; i++) {
+  var passwordString = '';
+  passwordString.concat(randomSelectionResults);
   
-// }
-
-
-
-  //must return a string value that is the password
-  //promt user to choose num between 8 -128
-    // var to save length
-
-    //validate user num
-  //confirm user for upper, lower, special chars, or nums
-  // 4 vars to save true or false to included characters
-  // vars that include all user options of each catergory. array of strings for each?
-  // var array of letters w/ toupper and tolower?
-  //if user says yes t include that cat choose random elements from the array
-    //how to decide how many elements to choose from each array
-    // maybe make a array with each one .concat
-  //validate that one catagory was chose 
+}
 
 
 
