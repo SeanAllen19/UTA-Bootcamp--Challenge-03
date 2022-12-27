@@ -21,15 +21,17 @@ var alphaU = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890";
 var specialCharacters = " !#$%&'()*+,-./:;<=>?@^_`{|}~[]";
 
+
 // FUNCTION START 
 function generatePassword() {
-
+  var customSentence = '';
   //// finding whether true or false - If True, add the corresponding string to selectionsResults - if False, add empty string. (maybe find more research to add nothing.)
   var Upper = confirm('Would you like Uppercased Letters in your PASSWORD?');
   if (Upper === true) {
     Upper = alphaU;
   } else {
     Upper = '';
+    alert('Uppercased Letter will not be added');
   }
   console.log(Upper)
  //////////////
@@ -39,6 +41,7 @@ function generatePassword() {
     Lower = alphaL;
   } else {
     Lower = '';
+    alert('Lowercased Letter will not be added');
   }
   console.log(Lower)
 /////////////////////
@@ -48,6 +51,7 @@ if(NumBers === true) {
   NumBers = numbers;
 } else {
   NumBers = '';
+  alert('Numbers will not be added');
 }
 console.log(NumBers)
 ////////////////////
@@ -57,6 +61,7 @@ if(eSpecial === true) {
   eSpecial = specialCharacters;
 } else {
   eSpecial = '';
+  alert('Special Characters will not be added');
 }
 console.log(eSpecial);
 ///////////////////////////////////////////////////
@@ -70,11 +75,30 @@ console.log("The lenght of the password is: " + lengthPassword);
 ////////////////////////////
 
 var selectionsResults = Upper + Lower +NumBers + eSpecial;
-var arrayOfResults = [Upper, Lower, NumBers, eSpecial];
+var arrayOfResults = [Upper, Lower, NumBers, eSpecial]; 
+var arrayLength = arrayOfResults.length //4
+var randomSelectionResults = selectionsResults[Math.floor(Math.random() * selectionsResults.length)]; //created a random letter or character based on selectionResults
+
+//// Possibly will use these for result prompting window, for later.
+// arrayOfResults[0] = "Uppercased Letters\n";
+// arrayOfResults[1] = "Lowercased Letters\n";
+// arrayOfResults[2] = "Numbers\n";
+// arrayOfResults[3] = "Special Characters";
+///// Test Consoles
 console.log(selectionsResults);
 console.log(arrayOfResults);
+console.log(randomSelectionResults);
 
+while (customSentence.length < lengthPassword) {
+  var randomItem = selectionsResults[Math.floor(Math.random() * selectionsResults.length)];
+  // console.log(randomItem)
+  // var randomChar = selectionsResults[randomItem];
+  // console.log(randomChar)
+  customSentence+= randomItem
+}
+return customSentence;
 
+console.log(customSentence);
 /// edge cases: not using a number and setting a number between 8 and 128
 if (isNaN(lengthPassword) ) {
   alert('Please enter a Number')
@@ -85,7 +109,6 @@ if (isNaN(lengthPassword) ) {
 
 //edge case: for not selecting any options
 for (var i = 0; i < arrayOfResults.length; i++) {
-  
   if(arrayOfResults[i] === '') {
     alert('Nothing was chosen. Please try again!');
     return;
@@ -94,43 +117,24 @@ for (var i = 0; i < arrayOfResults.length; i++) {
   }
 };
 
+/////////////// adding
+// if array has empty string, don't add to final prompt. 
+for(var j = 0; j < arrayOfResults.length; j++) {
 
-var randomSelectionResults = selectionsResults[Math.floor(Math.random() * selectionsResults.length)]; 
-console.log(randomSelectionResults);
-// for (var j = 0; i < lengthPassword; j++) {
-//   var customSentence = "naughty";
-//   customSentence[i].join(randomSelectionResults);
-//   return customSentence;
+  if(arrayOfResults[j] === "") {
+    return;
+  };
+  console.log('Would you like to have: ')
+
+}
+
+
+/// generate password
+// for (var j = 0; j < lengthPassword; j++) {
+  
+//   randomSelectionResults;
+  
 // } 
 
-
-
-/// Updating the user with their choices
-//////////
-// var finalCheck = prompt('')
-// if(selectionsResults = Upper === true && Lower === true && NumBers === true && eSpecial === true) {
-//   alert('Uppercased Letters \n Lowercased Letters \n Numbers \n Special Characters?')
-// } else if (Upper === true && Lower === true && NumBers === true && eSpecial !== true) {
-//   alert('////// placeholder')
-// }
-
-
-
-
-////variable of all the true statements, all in string form
-// var uniquePassword= '';
-// var selectionsResults = Upper + Lower +NumBers + eSpecial.toString();
-
-//password string = randomselectionresult * the lengthPassword
-
-// for (var i = 0; i < lengthPassword; i++) {
-//   var passwordString = '';
-//   passwordString.concat(randomSelectionResults);
-  
-// }
-
-
-
-  // return passwordString;
-
+// console.log(customSentence);
 };
