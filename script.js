@@ -20,8 +20,8 @@ var alphaL = "abcdefghijklmnopqrstuvwxyz";
 var alphaU = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "1234567890";
 var specialCharacters = " !#$%&'()*+,-./:;<=>?@^_`{|}~[]";
-var everyOption = [alphaL,alphaU,numbers,specialCharacters].toString('');
-
+var everyOption = alphaL+ alphaU +numbers+specialCharacters.toString('');
+console.log(everyOption[27])
 
 // FUNCTION START 
 function generatePassword() {
@@ -54,8 +54,8 @@ if(NumBers === true) {
 console.log(NumBers)
 ////////////////////
 
-var eSpecial= confirm('Would you lkke Special Characters in your PASSWORD?');
-if(eSpecial) {
+var eSpecial= confirm('Would you like Special Characters in your PASSWORD?');
+if(eSpecial === true) {
   eSpecial = specialCharacters;
 } else {
   eSpecial = '';
@@ -63,11 +63,31 @@ if(eSpecial) {
 console.log(eSpecial);
 
 
+//////
+//////// parseInt to change prompt property from string to number.
+var lengthPassword = parseInt(prompt('How many character would you like in your PASSWORD? (Please use any NUMBER between 8 - 128)'));
+
+/// edge cases for: not using a number and setting a number between 8 and 128
+if (isNaN(lengthPassword) ) {
+  alert('Please enter a Number')
+} else if (lengthPassword < 8 || lengthPassword > 128) {
+  alert('Please pick a number between 8 and 128')
+}
+
+
+
+console.log(lengthPassword);
+
+
 ////variable of all the true statements, all in string form
-var uniquePassword= '';
-var selectionsResults = [Upper,Lower,NumBers,eSpecial].toString();
+// var uniquePassword= '';
+var selectionsResults = Upper + Lower +NumBers + eSpecial.toString();
 console.log(selectionsResults);
 
+
+// for (var i = 0; i < selectionsResults.length; i++) {
+  
+// }
 
 
 
